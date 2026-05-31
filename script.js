@@ -1,6 +1,6 @@
 /**
  * KEYpages — script.js
- * Optimizado para rendimiento en móviles (60FPS) y accesibilidad en Desktop.
+ * Lógica Vanilla JS altamente optimizada.
  */
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
@@ -17,113 +17,75 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => requestAnimationFrame(handleScroll), { passive: true });
 
     // --- 2. REVEAL ANIMATIONS (Intersection Observer) ---
-    // Usamos rootMargin para que se animen un poco antes de aparecer
     const revealElements = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                observer.unobserve(entry.target); // Dejar de observar una vez animado
+                observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // --- 3. PILA DE CARTAS (Card Stack) ---
-    // Mantenemos la lógica de estado sin Reflows pesados
-    const stackCards = document.querySelectorAll(".stack-card");
-    if (stackCards.length > 0) {
-        let cardOrder = Array.from(stackCards);
-        let isAnimating = false;
+    // --- 3. RULETA DE CASINO (Navegación Circular Responsiva) ---
+    const roulette = document.getElementById('menu-roulette');
+    if (roulette) {
+        const items = roulette.querySelectorAll('.roulette-item');
+        const totalItems = items.length;
+        
+        // Radio dinámico: Más pequeño en celulares para evitar desbordes
+        const radius = window.innerWidth < 450 ? 120 : 160; 
+        let currentRotation = 0;
+        let activeIndex = 0;
 
-        // Inicializar clases
-        cardOrder.forEach((card, index) => card.classList.add(`pos-${index}`));
-
-        const rotateStack = (clickedCard) => {
-            // Solo permitir clic en la primera carta y si no hay animación en curso
-            if (clickedCard !== cardOrder[0] || isAnimating) return;
-            isAnimating = true;
-
-            // Animar salida
-            clickedCard.classList.remove('pos-0');
-            clickedCard.classList.add('out');
-
-            // Reorganizar el Array
-            const outgoingCard = cardOrder.shift();
-            cardOrder.push(outgoingCard);
-
-            // Actualizar las que quedan
-            cardOrder[0].classList.replace('pos-1', 'pos-0');
-            cardOrder[1].classList.replace('pos-2', 'pos-1');
-
-            // Reposicionar la que salió (usando requestAnimationFrame en vez de timers fijos donde sea posible)
-            setTimeout(() => {
-                outgoingCard.style.transition = 'none'; // Quitar transición para teletransporte
-                outgoingCard.classList.remove('out');
-                outgoingCard.classList.add('pos-2'); // Mandar al fondo
-
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        outgoingCard.style.transition = ''; // Restaurar transición CSS
-                        isAnimating = false;
-                    });
-                });
-            }, 400); // 400ms empata con el CSS de la clase .out
+        // Posicionar elementos en círculo
+        const positionItems = () => {
+            items.forEach((item, index) => {
+                const angle = (index / totalItems) * (2 * Math.PI);
+                const x = Math.round(radius * Math.sin(angle));
+                const y = Math.round(-radius * Math.cos(angle));
+                
+                item.style.transform = `translate(${x}px, ${y}px)`;
+            });
         };
 
-        stackCards.forEach(card => {
-            card.addEventListener("click", () => rotateStack(card));
-            card.addEventListener("keydown", e => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    rotateStack(card);
-                }
-            });
-        });
-    }
+        const updateRoulette = (direction) => {
+            items[activeIndex].classList.remove('active');
 
-    // --- 4. CARRUSEL NATIVO (Mobile & Desktop) ---
-    const track = document.getElementById("process-carousel");
-    const btnPrev = document.getElementById("btn-prev");
-    const btnNext = document.getElementById("btn-next");
-    const dotsContainer = document.getElementById("carousel-dots");
-    
-    if (track) {
-        const cards = track.querySelectorAll(".carousel-card");
-        
-        // Crear dots
-        cards.forEach((_, i) => {
-            const dot = document.createElement("div");
-            dot.classList.add("dot");
-            if(i === 0) dot.classList.add("active");
-            dotsContainer.appendChild(dot);
-        });
-        const dots = dotsContainer.querySelectorAll(".dot");
+            // Calcular nuevo índice
+            if (direction === 'right') {
+                activeIndex = (activeIndex + 1) % totalItems;
+                currentRotation -= (360 / totalItems);
+            } else {
+                activeIndex = (activeIndex - 1 + totalItems) % totalItems;
+                currentRotation += (360 / totalItems);
+            }
 
-        // Lógica de Scroll suave
-        const getCardWidth = () => cards[0].offsetWidth + parseInt(window.getComputedStyle(track).gap || 0);
-
-        btnNext.addEventListener("click", () => {
-            track.scrollBy({ left: getCardWidth(), behavior: "smooth" });
-        });
-
-        btnPrev.addEventListener("click", () => {
-            track.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
-        });
-
-        // Actualizar dots en base al scroll
-        track.addEventListener("scroll", () => {
+            items[activeIndex].classList.add('active');
+            
+            // Renderizado por GPU
             requestAnimationFrame(() => {
-                const scrollPos = track.scrollLeft;
-                const cardWidth = getCardWidth();
-                // Calcular qué tarjeta está más cerca del centro
-                const activeIndex = Math.round(scrollPos / cardWidth);
+                roulette.style.transform = `rotate(${currentRotation}deg)`;
                 
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle("active", index === activeIndex);
+                // Contrarrestar la rotación para que el texto siga derecho
+                items.forEach(item => {
+                    const currentTransform = item.style.transform.replace(/rotate\(.*?\)/g, ''); 
+                    item.style.transform = `${currentTransform} rotate(${-currentRotation}deg)`;
                 });
             });
-        }, { passive: true });
+        };
+
+        document.getElementById('btn-spin-left').addEventListener('click', () => updateRoulette('left'));
+        document.getElementById('btn-spin-right').addEventListener('click', () => updateRoulette('right'));
+
+        // Recalcular si voltean el celular
+        window.addEventListener('resize', () => {
+            requestAnimationFrame(positionItems);
+        });
+
+        // Inicializar
+        positionItems();
     }
 });
