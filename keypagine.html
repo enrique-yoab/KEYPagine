@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEYpagine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="keypagine.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="cabecera">
+        <div class="contenedor-interno" id="principal">
+            <p class="titulo-cabecera">KEYpagine</p>
+        </div>
+        <!-- <div class="contenedor-interno">
+            <p class="titulo-cabecera">Imagen</p>
+        </div> -->
+
+        <div class="contenedor-interno contenedor-atajo">
+            <button class="boton-menu" aria-label="Menu">
+                <span class="linea-menu"></span>
+                <span class="linea-menu"></span>
+                <span class="linea-menu"></span>
+            </button>
+
+            <nav class="menu-desplegable">
+                <a href="#inicio">&gt; INICIO </a>
+                <a href="#servicios">&gt; MODULO 1</a>
+                <a href="#problema">&gt; MODULO 2</a>
+                <a href="#contacto">&gt; MODULO 3</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenido">
+        <header class="inicio" id="inicio">
+            <h1 class="titulo-pagina"> KEYpagine </h1>
+        </header>
+
+        <div class="separador-seccion"><span>◈ MÓDULOS DEL SISTEMA ◈</span></div>
+
+        <section class="modulo-interno" id="servicios">
+            <span class="modulo-tag">Acerca de</span>
+            <h2 class="titulo-modulo">Quiénes somos</h2>
+            <p class="modulo-cuerpo">
+                Somos un equipo especializado en desarrollo web estático de alto rendimiento.
+                Construimos presencias digitales que pertenecen al cliente: código abierto,
+                infraestructura pública, cero intermediarios.
+            </p>
+            <div class="modulo-grid">
+                <div class="modulo-stat">
+                    <div class="modulo-stat-label">Proyectos</div>
+                    <div class="modulo-stat-value">24+</div>
+                </div>
+                <div class="modulo-stat">
+                    <div class="modulo-stat-label">Uptime</div>
+                    <div class="modulo-stat-value">99.9%</div>
+                </div>
+                <div class="modulo-stat">
+                    <div class="modulo-stat-label">Tecnología</div>
+                    <div class="modulo-stat-value">OpenSource</div>
+                </div>
+            </div>
+        </section>
+
+        <article id="problema" class="modulo-completo-problema">
+
+            <div class="bloque-encabezado-problema">
+                <span class="modulo-tag-alerta">⚠️ CRITICAL_DATA</span>
+                <h2 class="titulo-modulo-problema">Realidad del Mercado</h2>
+            </div>
+
+            <div class="contenedor-bloques">
+                <section class="bloque-contenido-problema">
+                    <h3>METODO 01 // PLATAFORMAS</h3>
+                    <p>Ecosistemas cerrados comerciales:</p>
+
+                    <ul class="lista-analisis">
+                        <li>
+                            <strong>💸 Costos Ocultos</strong>
+                            <span>Suscripciones forzosas y comisiones infinitas.</span>
+                        </li>
+                        <li>
+                            <strong>🔒 Cero Control</strong>
+                            <span>Sin acceso al código; dependencia de terceros.</span>
+                        </li>
+                        <li>
+                            <strong>🐌 Carga Lenta</strong>
+                            <span>Plantillas genéricas saturadas de código basura.</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="bloque-contenido-problema">
+                    <h3>METODO 02 // OPENSOURCE</h3>
+                    <p>Desarrollo libre sin intermediación:</p>
+
+                    <ul class="lista-analisis">
+                        <li>
+                            <strong>⚙️ Alta Fricción</strong>
+                            <span>Configuración compleja de servidores por consola.</span>
+                        </li>
+                        <li>
+                            <strong>❓ Incertidumbre</strong>
+                            <span>Desconfianza comercial por falta de soporte oficial.</span>
+                        </li>
+                        <li>
+                            <strong>🛠️ Abandono</strong>
+                            <span>Vulnerabilidad total sin un dev que administre parches.</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="pie-pagina" id="contacto">
+        <p>© 2026 KEYpagine. Todos los derechos reservados.</p>
+    </footer>
+    <script src="keypagine.js" defer></script>
+</body>
+
+</html>
