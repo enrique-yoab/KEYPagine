@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
     <title>KEYpagine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Electrolize&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Electrolize&family=Orbitron:wght@400;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -63,8 +65,15 @@
                     <span class="hero-separador">|</span>
                     <span class="hero-tag">BUILD_2026</span>
                 </div>
-                <h1 class="titulo-pagina"><span class="titulo-texto">KEYpagine</span></h1>
-                <p class="hero-subtitulo">Presencias digitales que <em>te pertenecen.</em><br>Código abierto. Sin intermediarios.</p>
+                <!-- Reemplaza tu actual <h1 class="titulo-pagina">...</h1> con esto: -->
+                <h1 class="titulo-pagina">
+                    <!-- Texto invisible que ancla el espacio -->
+                    <span style="visibility: hidden;">KEYpagine</span>
+                    <!-- Texto absoluto donde ocurre el efecto glitch -->
+                    <span class="titulo-texto">KEYpagine</span>
+                </h1>
+                <p class="hero-subtitulo">Presencias digitales que <em>te pertenecen.</em><br>Código abierto. Sin
+                    intermediarios.</p>
                 <div class="hero-cta">
                     <a href="#servicios" class="btn-primario">EXPLORAR SISTEMA <span>→</span></a>
                     <a href="#problema" class="btn-secundario">VER ANÁLISIS</a>
@@ -194,7 +203,8 @@
             <!-- Solución KEYpagine -->
             <div class="solucion-banner">
                 <span class="solucion-label">// NUESTRA PROPUESTA</span>
-                <p class="solucion-texto">Lo mejor de los dos mundos: <strong>código abierto con soporte experto.</strong></p>
+                <p class="solucion-texto">Lo mejor de los dos mundos: <strong>código abierto con soporte
+                        experto.</strong></p>
                 <a href="#contacto" class="btn-solucion">CONOCER MÁS →</a>
             </div>
         </article>
@@ -204,7 +214,8 @@
     <footer class="pie-pagina" id="contacto">
         <div class="pie-grid">
             <div class="pie-logo">
-                <span class="logo-bracket">[</span>KEY<span class="logo-acento">pagine</span><span class="logo-bracket">]</span>
+                <span class="logo-bracket">[</span>KEY<span class="logo-acento">pagine</span><span
+                    class="logo-bracket">]</span>
             </div>
             <div class="pie-info">
                 <p>© 2026 KEYpagine. Todos los derechos reservados.</p>
@@ -218,4 +229,5 @@
 
     <script src="script.js" defer></script>
 </body>
+
 </html>

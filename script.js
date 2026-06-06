@@ -73,20 +73,39 @@
 
     /* ─────────────────────────────────────────
        2. EFECTO GLITCH
+       El texto se escribe/borra SOLO dentro del elemento.
+       El bloque padre ya tiene min-height fijo en CSS,
+       así el layout nunca se mueve.
     ───────────────────────────────────────── */
     async function aplicarEfectoGlitch(selector, conBorrado = true) {
         const el = qs(selector);
         if (!el) return;
         const finalText = el.textContent.trim();
 
+        // Vaciar el nodo de texto pero dejar el pseudo-elemento ::after intacto
+        // usando un nodo de texto hijo en lugar de textContent directamente,
+        // para no remover otros nodos hijos si los hubiera.
+        function setText(t) {
+            // Buscar o crear el nodo de texto
+            let nodo = [...el.childNodes].find(n => n.nodeType === Node.TEXT_NODE);
+            if (!nodo) {
+                nodo = document.createTextNode('');
+                el.insertBefore(nodo, el.firstChild);
+            }
+            nodo.nodeValue = t;
+        }
+
+        // Estado inicial: texto vacío, espacio reservado por CSS min-height
+        setText('');
+
         async function typeWithGlitch() {
-            el.textContent = '';
+            setText('');
             for (let i = 0; i < finalText.length; i++) {
                 for (let g = 0; g < 2; g++) {
-                    el.textContent = finalText.slice(0, i) + rand(glitchChars);
+                    setText(finalText.slice(0, i) + rand(glitchChars));
                     await wait(30);
                 }
-                el.textContent = finalText.slice(0, i + 1);
+                setText(finalText.slice(0, i + 1));
                 await wait(finalText[i] === ' ' ? 70 : 48);
             }
             await wait(350);
@@ -95,24 +114,24 @@
 
         async function triggerRevealGlitch() {
             for (let round = 0; round < 4; round++) {
-                el.textContent = [...finalText].map(c =>
+                setText([...finalText].map(c =>
                     c === ' ' ? ' ' : (Math.random() < 0.35 ? rand(glitchChars) : c)
-                ).join('');
+                ).join(''));
                 el.style.textShadow = `2px 0 6px var(--neon-magenta), -2px 0 6px var(--neon-cyan), 0 0 20px var(--neon-cyan)`;
                 await wait(55);
-                el.textContent = finalText;
+                setText(finalText);
                 el.style.textShadow = '';
                 await wait(70);
             }
         }
 
         async function deleteText() {
-            let t = el.textContent;
+            let t = finalText;
             while (t.length > 0) {
                 t = t.slice(0, -1);
-                el.textContent = t + (Math.random() < 0.4 ? rand(glitchChars) : '');
+                setText(t + (Math.random() < 0.4 ? rand(glitchChars) : ''));
                 await wait(35);
-                el.textContent = t;
+                setText(t);
                 await wait(50);
             }
         }
@@ -122,13 +141,13 @@
                 await wait(5000 + Math.random() * 7000);
                 const iters = 2 + Math.floor(Math.random() * 3);
                 for (let i = 0; i < iters; i++) {
-                    el.textContent = [...finalText].map(c =>
+                    setText([...finalText].map(c =>
                         c === ' ' ? ' ' : (Math.random() < 0.2 ? rand(glitchChars) : c)
-                    ).join('');
+                    ).join(''));
                     el.style.transform = `translateX(${(Math.random() - 0.5) * 4}px)`;
                     el.style.textShadow = `${(Math.random() - 0.5) * 5}px 0 var(--neon-magenta), ${(Math.random() - 0.5) * 5}px 0 var(--neon-cyan)`;
                     await wait(45);
-                    el.textContent = finalText;
+                    setText(finalText);
                     el.style.transform = '';
                     el.style.textShadow = '';
                     await wait(55);
