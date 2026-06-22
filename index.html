@@ -3,231 +3,65 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
-    <title>KEYpagine</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Electrolize&family=Orbitron:wght@400;700;900&display=swap"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypagine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Partículas de fondo -->
-    <canvas id="canvas-particulas"></canvas>
+    <canvas id="canvas"></canvas>
 
-    <header class="cabecera">
-        <div class="contenedor-interno" id="principal">
-            <a href="#inicio" class="logo-link">
-                <span class="logo-bracket">[</span>
-                <span class="titulo-cabecera">KEY</span><span class="titulo-cabecera logo-acento">pagine</span>
-                <span class="logo-bracket">]</span>
-            </a>
-        </div>
+    <!-- Barra de navegación -->
+    <header class="neon-header">
+        <div class="logo">Keypagine</div>
 
-        <nav class="nav-central">
-            <a href="#inicio" class="nav-enlace"><span class="nav-idx">01</span>INICIO</a>
-            <a href="#servicios" class="nav-enlace"><span class="nav-idx">02</span>NOSOTROS</a>
-            <a href="#problema" class="nav-enlace"><span class="nav-idx">03</span>ANÁLISIS</a>
-            <a href="#contacto" class="nav-enlace"><span class="nav-idx">04</span>CONTACTO</a>
+        <!-- Nav desktop -->
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Proyectos</a>
+            <a href="#">Acerca</a>
+            <button class="nav-cta">Contacto</button>
         </nav>
 
-        <div class="cabecera-controles">
-            <button class="boton-tema" aria-label="Cambiar Tema" title="Cambiar Paleta Visual">
-                <span class="tema-icon">◐</span>
-                <span class="tema-label">SYS_COLOR</span>
-            </button>
-            <button class="boton-menu" aria-label="Menú">
-                <span class="linea-menu"></span>
-                <span class="linea-menu"></span>
-                <span class="linea-menu"></span>
-            </button>
-        </div>
-
-        <nav class="menu-desplegable" aria-hidden="true">
-            <div class="menu-header">// NAVEGACIÓN</div>
-            <a href="#inicio" class="menu-item"><span class="menu-idx">&#x276F;</span> INICIO</a>
-            <a href="#servicios" class="menu-item"><span class="menu-idx">&#x276F;</span> MÓDULO 01 — NOSOTROS</a>
-            <a href="#problema" class="menu-item"><span class="menu-idx">&#x276F;</span> MÓDULO 02 — ANÁLISIS</a>
-            <a href="#contacto" class="menu-item"><span class="menu-idx">&#x276F;</span> MÓDULO 03 — CONTACTO</a>
-            <div class="menu-footer">SYS://KEYPAGINE_v3.0</div>
-        </nav>
+        <!-- Botón hamburguesa (solo móvil) -->
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <main class="contenido">
+    <!-- Menú desplegable móvil -->
+    <nav class="mobile-menu" id="mobile-menu">
+        <a href="#">Inicio</a>
+        <a href="#">Proyectos</a>
+        <a href="#">Acerca</a>
+        <button class="nav-cta-mobile">Contacto</button>
+    </nav>
 
-        <!-- HERO -->
-        <section class="inicio" id="inicio">
-            <div class="inicio-inner">
-                <div class="hero-meta">
-                    <span class="hero-tag">&#x25C8; SISTEMA ACTIVO</span>
-                    <span class="hero-separador">|</span>
-                    <span class="hero-tag">BUILD_2026</span>
-                </div>
-                <!-- Reemplaza tu actual <h1 class="titulo-pagina">...</h1> con esto: -->
-                <h1 class="titulo-pagina">
-                    <!-- Texto invisible que ancla el espacio -->
-                    <span style="visibility: hidden;">KEYpagine</span>
-                    <!-- Texto absoluto donde ocurre el efecto glitch -->
-                    <span class="titulo-texto">KEYpagine</span>
-                </h1>
-                <p class="hero-subtitulo">Presencias digitales que <em>te pertenecen.</em><br>Código abierto. Sin
-                    intermediarios.</p>
-                <div class="hero-cta">
-                    <a href="#servicios" class="btn-primario">EXPLORAR SISTEMA <span>→</span></a>
-                    <a href="#problema" class="btn-secundario">VER ANÁLISIS</a>
-                </div>
+    <!-- Cuerpo de la página -->
+    <main>
+        <header class="hero-header">
+            <div id="typing-container">
+                <span id="text-display"></span><span id="cursor"></span>
             </div>
-            <div class="hero-decoracion">
-                <div class="hex-grid"></div>
-                <div class="linea-vertical"></div>
-                <div class="scan-line"></div>
-            </div>
+        </header>
+        <section class="bloque-global">
+            <section class="bloque-informativo">
+
+            </section>
+            <section class="bloque-informativo">
+
+            </section>
         </section>
-
-        <!-- SEPARADOR -->
-        <div class="separador-seccion"><span>◈ MÓDULOS DEL SISTEMA ◈</span></div>
-
-        <!-- MÓDULO 01: QUIÉNES SOMOS -->
-        <section class="modulo-interno" id="servicios">
-            <div class="modulo-numero">01</div>
-            <span class="modulo-tag">Acerca de</span>
-            <h2 class="titulo-modulo">Quiénes somos</h2>
-            <p class="modulo-cuerpo">
-                Somos un equipo especializado en desarrollo web estático de alto rendimiento.
-                Construimos presencias digitales que pertenecen al cliente: código abierto,
-                infraestructura pública, cero intermediarios.
-            </p>
-            <div class="modulo-grid">
-                <div class="modulo-stat">
-                    <div class="modulo-stat-label">Proyectos</div>
-                    <div class="modulo-stat-value" data-count="24">24+</div>
-                </div>
-                <div class="modulo-stat">
-                    <div class="modulo-stat-label">Uptime</div>
-                    <div class="modulo-stat-value">99.9%</div>
-                </div>
-                <div class="modulo-stat">
-                    <div class="modulo-stat-label">Tecnología</div>
-                    <div class="modulo-stat-value">OpenSource</div>
-                </div>
-            </div>
-            <div class="modulo-corner tl"></div>
-            <div class="modulo-corner tr"></div>
-            <div class="modulo-corner bl"></div>
-            <div class="modulo-corner br"></div>
-        </section>
-
-        <!-- MÓDULO 02: ANÁLISIS DE MERCADO -->
-        <article id="problema" class="modulo-completo-problema">
-            <div class="problema-bg-text">CRITICAL</div>
-
-            <div class="bloque-encabezado-problema">
-                <div class="modulo-numero alerta">02</div>
-                <span class="modulo-tag-alerta">⚠ CRITICAL_DATA // ANÁLISIS DE MERCADO</span>
-                <h2 class="titulo-modulo-problema">Realidad del Mercado</h2>
-                <p class="problema-intro">Dos métodos dominan el ecosistema. Los dos tienen fallas críticas.</p>
-            </div>
-
-            <div class="contenedor-bloques">
-                <section class="bloque-contenido-problema bloque-plataformas">
-                    <div class="bloque-header">
-                        <span class="bloque-num">01</span>
-                        <h3>PLATAFORMAS CERRADAS</h3>
-                    </div>
-                    <p class="bloque-desc">Ecosistemas comerciales con dependencia total:</p>
-                    <ul class="lista-analisis">
-                        <li>
-                            <span class="lista-icono">💸</span>
-                            <div>
-                                <strong>Costos Ocultos</strong>
-                                <span>Suscripciones forzosas y comisiones infinitas.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="lista-icono">🔒</span>
-                            <div>
-                                <strong>Cero Control</strong>
-                                <span>Sin acceso al código; dependencia de terceros.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="lista-icono">🐌</span>
-                            <div>
-                                <strong>Carga Lenta</strong>
-                                <span>Plantillas saturadas de código basura.</span>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-                <div class="vs-separador">
-                    <div class="vs-linea"></div>
-                    <span class="vs-texto">VS</span>
-                    <div class="vs-linea"></div>
-                </div>
-
-                <section class="bloque-contenido-problema bloque-opensource">
-                    <div class="bloque-header">
-                        <span class="bloque-num">02</span>
-                        <h3>OPENSOURCE SIN SOPORTE</h3>
-                    </div>
-                    <p class="bloque-desc">Desarrollo libre sin la red de seguridad:</p>
-                    <ul class="lista-analisis">
-                        <li>
-                            <span class="lista-icono">⚙️</span>
-                            <div>
-                                <strong>Alta Fricción</strong>
-                                <span>Configuración compleja de servidores por consola.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="lista-icono">❓</span>
-                            <div>
-                                <strong>Incertidumbre</strong>
-                                <span>Desconfianza por falta de soporte oficial.</span>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="lista-icono">🛠️</span>
-                            <div>
-                                <strong>Abandono</strong>
-                                <span>Vulnerabilidad sin un dev que gestione parches.</span>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-
-            <!-- Solución KEYpagine -->
-            <div class="solucion-banner">
-                <span class="solucion-label">// NUESTRA PROPUESTA</span>
-                <p class="solucion-texto">Lo mejor de los dos mundos: <strong>código abierto con soporte
-                        experto.</strong></p>
-                <a href="#contacto" class="btn-solucion">CONOCER MÁS →</a>
-            </div>
-        </article>
-
     </main>
 
-    <footer class="pie-pagina" id="contacto">
-        <div class="pie-grid">
-            <div class="pie-logo">
-                <span class="logo-bracket">[</span>KEY<span class="logo-acento">pagine</span><span
-                    class="logo-bracket">]</span>
-            </div>
-            <div class="pie-info">
-                <p>© 2026 KEYpagine. Todos los derechos reservados.</p>
-                <p class="pie-sys">SYS://KEYPAGINE_v3.0 — BUILD_OK</p>
-            </div>
-            <div class="pie-status">
-                <span class="status-dot"></span> SISTEMA OPERATIVO
-            </div>
-        </div>
+    <!-- Pie de la pagina-->
+    <footer class="neon-footer">
+        <p>SYS.LOG // &copy; 2026 KEYpagine // ALL SECRETS ENCRYPTED</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
