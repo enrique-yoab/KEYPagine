@@ -4,124 +4,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keypagine</title>
+    <title>KEYpagine</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" aria-hidden="true"></canvas>
 
-    <!-- Barra de navegación -->
     <header class="neon-header">
-        <div class="logo">Keypagine</div>
+        <div class="logo">KEY<strong>pagine</strong></div>
 
-        <!-- Nav desktop -->
-        <nav>
+        <nav aria-label="Navegación principal desktop">
             <a href="#">Inicio</a>
-            <a href="#">Proyectos</a>
-            <a href="#">Acerca</a>
+            <a href="#">Protocolo</a>
+            <a href="#">Costo</a>
             <button class="nav-cta">Contacto</button>
         </nav>
 
-        <!-- Botón hamburguesa (solo móvil) -->
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
         </button>
     </header>
 
-    <!-- Menú desplegable móvil -->
-    <nav class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Navegación principal móvil">
         <a href="#">Inicio</a>
-        <a href="#">Proyectos</a>
+        <a href="#">Protocolo</a>
         <a href="#">Acerca</a>
         <button class="nav-cta-mobile">Contacto</button>
     </nav>
 
-    <!-- Cuerpo de la página -->
     <main>
         <header class="hero-header">
-            <div id="typing-container">
+            <div id="typing-container" aria-label="KEYpagine">
                 <span id="text-display"></span><span id="cursor"></span>
             </div>
         </header>
+
         <section class="bloque-global">
-            <section class="bloque-informativo">
+            <article class="bloque-transparencia">
+                <h2 class="cyber-subtitle">Infraestructura Transparente</h2>
+
                 <div class="apartado-textual">
-                    <h2 class="cyber-subtitle">Infraestructura Transparente</h2>
                     <p>
-                        Impulsados por una filosofía de puro <strong>Open Source</strong>, eliminamos los intermediarios
-                        cerrados.
-                        Utilizamos <strong>GitHub Pages</strong> como nuestro núcleo de alojamiento estático,
-                        garantizando transparencia
-                        total y un control absoluto sobre cada línea de código.
+                        El software libre cambió la historia. Así como Linux liberó el sistema operativo del control
+                        corporativo cerrado, <strong>KEYpagine</strong> libera tu código. Impulsados por el <strong>Open
+                            Source</strong>, utilizamos la infraestructura de <strong>GitHub Pages</strong> como nuestro
+                        motor de alojamiento estático. ¿El resultado? Transparencia total, colaboración y soberanía
+                        absoluta sobre la ingeniería de tu página.
                     </p>
                     <p>
-                        Además, la seguridad perimetral y el rendimiento de entrega a nivel global están blindados por
-                        la red
-                        de <strong>Cloudflare</strong>, asegurando que tu sitio sea ultrarrápido y resistente.
+                        Tu red no solo es abierta, es una fortaleza. Respaldada por la arquitectura de
+                        <strong>Cloudflare</strong>, garantizamos un escudo de seguridad perimetral y un rendimiento
+                        global que mantiene tu sitio ultrarrápido, resistente y siempre en línea.
+                    </p>
+                    <p>
+                        Esta eficiencia técnica es el núcleo de nuestro modelo. Al eliminar los costos de servidores
+                        cerrados, podemos ofrecer <strong>control</strong> absoluto, <strong>mantenimiento</strong>
+                        continuo y un <strong>ingeniero</strong> asignado que lleva tu pedido de la mano.
                     </p>
                 </div>
-                <!-- Bloque que muestra la idea principal y la terminal-->
-                <div class="apartado-terminal">
-                    <div class="terminal-header">
+
+                <figure class="apartado-terminal">
+                    <figcaption class="terminal-header">
                         <div class="terminal-buttons">
                             <span class="terminal-btn btn-close"></span>
                             <span class="terminal-btn btn-min"></span>
                             <span class="terminal-btn btn-max"></span>
                         </div>
                         <div class="terminal-title">bash — user@fedora</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
-                                class="terminal-command">git init</span></div>
+                    </figcaption>
+                    <div class="terminal-body" aria-hidden="true">
+                        <div><span class="terminal-prompt">[user@fedora ~]$</span> <span class="terminal-command">git
+                                init</span></div>
                         <span class="terminal-output">Initialized empty Git repository in
                             /home/user/KEYpagine/.git/</span>
-
-                        <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
-                                class="terminal-command">git add .</span></div>
-
-                        <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
-                                class="terminal-command">git commit -m "feat: init KEYpagine core"</span></div>
+                        <div><span class="terminal-prompt">[user@fedora ~]$</span> <span class="terminal-command">git
+                                add .</span></div>
+                        <div><span class="terminal-prompt">[user@fedora ~]$</span> <span class="terminal-command">git
+                                commit -m "feat: init KEYpagine core"</span></div>
                         <span class="terminal-output">[main (root-commit) a1b2c3d] feat: init KEYpagine core</span>
-
-                        <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
-                                class="terminal-command">git remote add origin
-                                https://github.com/usuario/KEYpagine.git</span></div>
-
-                        <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
-                                class="terminal-command">git push -u origin main</span></div>
+                        <div><span class="terminal-prompt">[user@fedora ~]$</span> <span class="terminal-command">git
+                                push -u origin main</span></div>
                         <span class="terminal-output">Branch 'main' set up to track remote branch 'main' from
                             'origin'.</span>
-
                         <div><span class="terminal-prompt">[user@fedora KEYpagine]$</span> <span
                                 class="terminal-cursor"></span></div>
                     </div>
+                </figure>
+            </article>
+
+            <!-- Bloque Informativo 1.5: Realidad del Mercado (Comparativa) -->
+            <article class="bloque-realidad">
+                <h2 class="cyber-subtitle">Empresa Privada vs Herramientas Libres</h2>
+
+                <div class="contenido-realidad">
+                    <p>La realidad del mercado digital es más hostil de lo que aparenta. Las plataformas corporativas de
+                        creación web prometen facilidad, pero te atan a <strong>membresías infladas</strong>, ocultan
+                        qué datos recopilan de tus usuarios y restringen el control sobre tu propio diseño.</p>
+                    <p>Por otro lado, el ecosistema <strong>Open Source</strong> es inmensamente potente y libre, pero
+                        su curva de aprendizaje técnico (despliegue de repositorios, comandos, servidores) resulta
+                        costosa en tiempo para un negocio activo.</p>
+                    <p><strong>KEYpagine</strong> es el puente definitivo. Te entregamos el poder y la soberanía del
+                        software libre, absorbiendo nosotros toda la fricción técnica.</p>
                 </div>
-            </section>
-            <!-- Bloque que muestra y compara los dos tipos de infrestructura-->
-            <section class="bloque-informativo">
-            </section>
+
+                <div class="contenido-comparacion">
+                    <!-- Columna Izquierda (Advertencia) -->
+                    <div class="comparador left">
+                        <h3 class="col-title">Plataformas Cerradas</h3>
+                        <ul>
+                            <li>Costos ocultos y aumentos anuales forzados.</li>
+                            <li>Eres un inquilino; dejas de pagar y pierdes tu web.</li>
+                            <li>Cajas negras de privacidad (Minería de datos).</li>
+                            <li>Rendimiento atado a servidores compartidos lentos.</li>
+                            <li>Código cerrado: no puedes llevarte tu página a otro lado.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Columna Derecha (Solución KEYpagine) -->
+                    <div class="comparador right">
+                        <h3 class="col-title">Open Source + KEYpagine</h3>
+                        <ul>
+                            <li>Membresía transparente sin costos sorpresa.</li>
+                            <li>Soberanía total: el código fuente te pertenece a ti.</li>
+                            <li>Privacidad absoluta (Cero recopilación de datos oculta).</li>
+                            <li>Arquitectura global descentralizada ultrarrápida.</li>
+                            <li>Código abierto: libertad de portabilidad total.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article class="bloque-proyecto">
+                <h2 class="cyber-subtitle">Protocolo de Despliegue</h2>
+
+                <div class="carousel-wrapper">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="track">
+
+                            <div class="step-card">
+                                <div class="step-header">
+                                    <span class="step-number">01</span>
+                                    <span class="step-status">/ PENDIENTE</span>
+                                </div>
+                                <h3>Identidad GitHub</h3>
+                                <p>El primer paso hacia tu soberanía digital. Necesitas una cuenta en la plataforma de
+                                    código abierto más grande del mundo para alojar tu infraestructura.</p>
+                                <a href="https://github.com/signup" target="_blank" rel="noopener"
+                                    class="card-link">Crear cuenta en GitHub_</a>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-header">
+                                    <span class="step-number">02</span>
+                                    <span class="step-status">/ REQUERIDO</span>
+                                </div>
+                                <h3>Creación del Núcleo</h3>
+                                <p>Deberás crear un nuevo repositorio en tu cuenta. El nombre que le asignes a este
+                                    repositorio será la base sobre la cual construiremos la arquitectura de tu web.</p>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-header">
+                                    <span class="step-number">03</span>
+                                    <span class="step-status">/ ENLACE</span>
+                                </div>
+                                <h3>Conexión & Deploy</h3>
+                                <p>Agréganos como colaboradores en tu repositorio. Esto nos otorgará los accesos para
+                                    inyectar el código base y publicar la página oficialmente mediante <strong>GitHub
+                                        Pages</strong>.</p>
+                            </div>
+
+                            <div class="step-card">
+                                <div class="step-header">
+                                    <span class="step-number">04</span>
+                                    <span class="step-status">/ ONLINE</span>
+                                </div>
+                                <h3>Ingeniero Asignado</h3>
+                                <p>Despliegue completado. A partir de este momento, el sistema te asigna un ingeniero de
+                                    nuestro equipo, quien ejecutará todos los cambios y mantenimiento que solicites.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="btn-prev" aria-label="Paso anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div class="carousel-indicators" id="indicators">
+                        <span class="indicator active"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                        <span class="indicator"></span>
+                    </div>
+
+                    <button class="carousel-btn next-btn" id="btn-next" aria-label="Paso siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+            </article>
         </section>
     </main>
 
-    <!-- Pie de la pagina-->
     <footer class="neon-footer">
         <p>SYS.LOG // &copy; 2026 KEYpagine // ALL SECRETS ENCRYPTED</p>
         <span class="footer-divider">//</span>
-        <a class="footer-github" href="https://github.com" target="_blank" rel="noopener" aria-label="Alojado en GitHub">
+        <a class="footer-github" href="https://github.com" target="_blank" rel="noopener"
+            aria-label="Alojado en GitHub">
             <svg class="github-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577
-                    0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755
-                    -1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305
-                    3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93
-                    0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23
-                    .96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23
-                    3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22
-                    0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22
-                    0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12
-                    c0-6.63-5.37-12-12-12z"/>
+                <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
             </svg>
             <span>Hosted on GitHub</span>
         </a>
